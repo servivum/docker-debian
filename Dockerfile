@@ -26,6 +26,5 @@ RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-WORKDIR /var/www
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
