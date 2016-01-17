@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 	git \
 	nano \
 	openssh-server \
+	ssmtp \
 	supervisor \
 	unzip \
 	vim \
