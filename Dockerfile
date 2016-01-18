@@ -33,6 +33,7 @@ RUN mkdir -p /var/run/sshd && \
 
 # Configure cron
 # @TODO: Configure cron
+# https://github.com/mailtank-ru/rsstank/blob/master/docker/files/cron-supervisor.conf
 # https://www.ekito.fr/people/run-a-cron-job-with-docker/
 
 # Clean up

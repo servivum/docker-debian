@@ -1,0 +1,9 @@
+services:
+  - docker
+
+install:
+  - docker build -t debian .
+  - docker run -d --name debian debian
+
+script:
+  - docker ps | grep -q debian
