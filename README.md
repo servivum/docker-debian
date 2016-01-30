@@ -6,3 +6,17 @@
 # Debian Docker Base Image with Useful Tools
 
 Dockerfile for extending official Debian image with useful tools, e.g. Git, Wget, etc.
+
+## What's inside?
+
+- ca-certificates: Brings root certs for trusting secured connections with common CAs. 
+- cron: Use Cron jobs for scheduling tasks like cleanup processes.
+- curl: Swiss army knife to use various number of protocols.
+- git: THE version control system.
+- nano: Easy editor for modifying files.
+- openssh-server: For connecting to the container via SSH and executing commands within.
+- ssmtp: Tiny mail server for sending mails from your application to the world. 
+- supervisor: Helper for running multiple processes in a container, e.g. cron and openssh-server.
+- unzip: Unpack ZIP archives.
+- vim: Powerful editor for nerds.
+- wget: The standard for downloading archives.
