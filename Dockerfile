@@ -1,4 +1,4 @@
-# Debian Docker Base Image + Useful Tools
+# Debian Docker Base Image with Useful Tools
 
 FROM debian:jessie
 MAINTAINER Patrick Baber <patrick.baber@servivum.com>
