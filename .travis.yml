@@ -7,4 +7,9 @@ install:
 
 script:
   - docker ps | grep debian
-  - docker exec debian which nano123
+  - docker exec debian which curl
+  - docker exec debian which git
+  - docker exec debian which nano
+  - docker exec debian which unzip
+  - docker exec debian which vim
+  - docker exec debian which wget
