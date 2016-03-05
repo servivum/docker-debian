@@ -3,7 +3,7 @@ services:
 
 install:
   - docker build -t debian .
-  - docker run -d --name debian debian
+  - docker run -d -P --name debian debian
   - sleep 10
 
 script:
