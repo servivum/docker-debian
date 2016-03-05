@@ -7,7 +7,7 @@ install:
 
 script:
   - docker ps | grep debian
-  - docker exec debian dpkg -s ca-certificatesaa
+  - docker exec debian dpkg -s ca-certificates
   - docker exec debian which cron
   - docker exec debian which curl
   - docker exec debian which git
