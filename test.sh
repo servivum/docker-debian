@@ -16,7 +16,7 @@ docker exec debian ps aux | grep sshd
 ssh-keygen -f ~/.ssh/test_rsa -t rsa -N ''
 docker cp ~/.ssh/test_rsa.pub debian:/root/.ssh/authorized_keys
 docker exec -ti debian cat /root/.ssh/authorized_keys
-#PORT=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}' debian)
+PORT=$(docker inspect --format='{{(index (index .NetworkSettings.Ports \"22/tcp\") 0).HostPort}}' debian)
 #ssh -p $PORT -o "StrictHostKeyChecking no" -t root@127.0.0.1 "pwd"
 
 docker exec debian which ssmtp
