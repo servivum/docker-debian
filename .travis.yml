@@ -4,6 +4,7 @@ services:
 install:
   - docker build -t debian .
   - docker run -d --name debian debian
+  - sleep 10
 
 script:
   - docker ps | grep debian
