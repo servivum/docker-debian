@@ -6,4 +6,5 @@ install:
   - docker run -d --name debian debian
 
 script:
-  - docker ps | grep -q debian
+  - docker ps | grep debian
+  - docker exec debian which nano123
