@@ -13,7 +13,7 @@ script:
   - docker exec debian which git
   - docker exec debian which nano
   - docker exec debian which sshd
-  - docker exec debian ps aux | grep "sshd"
+  - docker exec debian ps aux | grep sshd
   - docker exec debian which ssmtp
   - docker exec debian which supervisord
   - docker exec debian which unzip
