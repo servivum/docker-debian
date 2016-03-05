@@ -18,7 +18,7 @@ script:
   - "PORT=$(docker inspect --format='{{(index (index .NetworkSettings.Ports \"22/tcp\") 0).HostPort}}' debian)"
   - echo $PORT
   - ssh -p $PORT -o "StrictHostKeyChecking no" 127.0.0.1
-  - ssh -p $PORT -t 127.0.0.1 "pwd"
+  - ssh -p $PORT -t root@127.0.0.1 "pwd"
   - docker exec debian which ssmtp
   - docker exec debian which supervisord
   - docker exec debian which unzip
