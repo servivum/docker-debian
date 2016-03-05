@@ -18,3 +18,11 @@ point to create your own small images with some handy tools.
 - unzip: Unpack ZIP archives.
 - vim: Powerful editor for nerds.
 - wget: The standard for downloading archives.
+
+## Log into container via SSH with public key
+
+Mount your public key into `/authorized_keys` within the container. Example:
+
+```bash
+docker run -d -P -v ~/.ssh/id_rsa.pub:/authorized_keys:ro servivum/debian
+```
