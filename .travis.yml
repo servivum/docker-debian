@@ -7,9 +7,14 @@ install:
 
 script:
   - docker ps | grep debian
+  - docker exec debian dpkg -s ca-certificatesaa
+  - docker exec debian which cron
   - docker exec debian which curl
   - docker exec debian which git
   - docker exec debian which nano
+  - docker exec debian which sshd
+  - docker exec debian which ssmtp
+  - docker exec debian which supervisor
   - docker exec debian which unzip
   - docker exec debian which vim
   - docker exec debian which wget
