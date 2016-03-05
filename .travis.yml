@@ -3,7 +3,7 @@ services:
 
 install:
   - docker build -t debian .
-  - "docker run -d -P -v ~/.ssh/id_rsa.pub:/authorized_keys:ro --name debian servivum/debian"
+  - "docker run -d -P -v ~/.ssh/id_rsa.pub:/authorized_keys:ro --name debian debian"
   - sleep 10
 
 script:
