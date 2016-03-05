@@ -2,7 +2,8 @@
 
 # Debian Docker Base Image with Useful Tools
 
-Dockerfile for extending official Debian image with useful tools, e.g. Git, Wget, etc.
+Dockerfile for extending official Debian image with useful tools, e.g. Git, Wget, etc. The Image is a good starting 
+point to create your own small images with some handy tools.
 
 ## What's inside?
 
