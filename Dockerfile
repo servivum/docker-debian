@@ -4,7 +4,7 @@ FROM debian:jessie
 MAINTAINER Patrick Baber <patrick.baber@servivum.com>
 
 # Install utilities
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y  --no-install-recommends \
 	ca-certificates \
 	cron \
 	curl \
@@ -15,11 +15,11 @@ RUN apt-get update && apt-get install -y \
 	supervisor \
 	unzip \
 	vim \
-	wget
+	wget && \
+# Clean up
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Configure Supervisor
-# @TODO: Replace supervisord with S6: http://blog.tutum.co/2014/12/02/docker-and-s6-my-new-favorite-process-supervisor/
-# @TODO: To inject an authorized_keys file, we have to use a startup script which copies the external mount to /root/.ssh/authorized_keys with the right permissions.
 RUN mkdir -p /var/log/supervisor
 COPY etc/supervisor/conf.d/00_supervisord.conf /etc/supervisor/conf.d/00_supervisord.conf
 
@@ -35,11 +35,6 @@ RUN mkdir -p /var/run/sshd && \
 # @TODO: Configure cron
 # https://github.com/mailtank-ru/rsstank/blob/master/docker/files/cron-supervisor.conf
 # https://www.ekito.fr/people/run-a-cron-job-with-docker/
-
-# Clean up
-RUN apt-get clean autoclean && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
