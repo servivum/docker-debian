@@ -1,10 +1,5 @@
 services:
   - docker
 
-install:
-  - docker build -t debian .
-  - docker run -d -P --name debian debian
-  - sleep 10
-
 script:
   - ./test.sh
