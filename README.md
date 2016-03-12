@@ -3,7 +3,8 @@
 # Debian Docker Base Image with Useful Tools
 
 Dockerfile for extending official Debian image with useful tools, e.g. Git, Wget, etc. The Image is a good starting 
-point to create your own small images with some handy tools.
+point to create your own small images with some handy tools. See [Docker Hub](https://hub.docker.com/r/servivum/debian) 
+for more details about the image.
 
 ## What's inside?
 
