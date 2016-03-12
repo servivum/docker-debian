@@ -14,6 +14,7 @@ for more details about the image.
 - git: THE version control system.
 - nano: Easy editor for modifying files.
 - openssh-server: For connecting to the container via SSH and executing commands within.
+- rsync: Use it for copying files from server A to server B.
 - ssmtp: Tiny mail server for sending mails from your application to the world. 
 - supervisor: Helper for running multiple processes in a container, e.g. cron and openssh-server.
 - unzip: Unpack ZIP archives.
