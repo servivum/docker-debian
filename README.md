@@ -19,6 +19,10 @@ point to create your own small images with some handy tools.
 - vim: Powerful editor for nerds.
 - wget: The standard for downloading archives.
 
+## Supported Tags
+
+- `jessie`, `latest` [(Dockerfile)](https://github.com/Servivum/docker-debian)
+
 ## Log into container via SSH with public key
 
 Mount your public key into `/authorized_keys` within the container. Example:
