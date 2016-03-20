@@ -32,7 +32,14 @@ ssh-keygen -f ~/.ssh/test_rsa -t rsa -N ''
 docker cp ~/.ssh/test_rsa.pub debian:/root/.ssh/authorized_keys
 docker exec -ti debian cat /root/.ssh/authorized_keys
 docker exec -ti debian chown root:root /root/.ssh/authorized_keys
-export IP="127.0.0.1"
+
+# Get IP address of external docker-machine or use localhost instead
+if ! docker-machine ip; then
+    export IP="127.0.0.1"
+else
+    export IP=$(docker-machine ip)
+fi
+
 export PORT=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}' debian)
 docker ps
 ssh -v -p $PORT -i ~/.ssh/test_rsa -o "StrictHostKeyChecking no" -t root@$IP "pwd"
