@@ -33,7 +33,7 @@ docker cp ~/.ssh/test_rsa.pub debian:/root/.ssh/authorized_keys
 docker exec -ti debian cat /root/.ssh/authorized_keys
 docker exec -ti debian chown root:root /root/.ssh/authorized_keys
 
-# Get IP address of external docker-machine or use localhost instead
+echo "Getting IP address of external docker-machine or using localhost instead ..."
 if ! docker-machine ip; then
     export IP="127.0.0.1"
 else
