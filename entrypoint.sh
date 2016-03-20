@@ -4,7 +4,7 @@ set -e
 
 [ "$DEBUG" == 'true' ] && set -x
 
-DAEMON=sshd
+DAEMON=supervisord
 
 # Copy public key
 if [ -f authorized_keys ]; then

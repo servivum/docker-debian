@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y  --no-install-recommends \
 
 # Configure Supervisor
 RUN mkdir -p /var/log/supervisor
-COPY etc/supervisor/conf.d/00_supervisord.conf /etc/supervisor/conf.d/00_supervisord.conf
+COPY etc/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 
 # Configure SSH
 ENV NOTVISIBLE "in users profile"
@@ -42,4 +42,4 @@ COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 22
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
