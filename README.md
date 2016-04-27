@@ -23,7 +23,7 @@ for more details about the image.
 
 ## Supported Tags
 
-- `jessie`, `latest` [(Dockerfile)](https://github.com/Servivum/docker-debian)
+- `jessie`, `latest` [(Dockerfile)](https://github.com/servivum/docker-debian)
 
 ## Log into container via SSH with public key
 
