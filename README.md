@@ -1,4 +1,4 @@
-![Debian Jessie](https://img.shields.io/badge/Debian-Jessie-brightgreen.svg?style=flat-square) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT) [![Travis](https://img.shields.io/travis/Servivum/docker-debian.svg?style=flat-square)](https://travis-ci.org/Servivum/docker-debian)
+![Debian Jessie](https://img.shields.io/badge/Debian-Jessie-brightgreen.svg?style=flat-square) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT) [![Travis](https://img.shields.io/travis/servivum/docker-debian.svg?style=flat-square)](https://travis-ci.org/servivum/docker-debian)
 
 # Debian Docker Base Image with Useful Tools
 
@@ -23,7 +23,7 @@ for more details about the image.
 
 ## Supported Tags
 
-- `jessie`, `latest` [(Dockerfile)](https://github.com/Servivum/docker-debian)
+- `jessie`, `latest` [(Dockerfile)](https://github.com/servivum/docker-debian)
 
 ## Log into container via SSH with public key
 
