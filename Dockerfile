@@ -18,9 +18,6 @@ RUN apt-get update && apt-get install -y  --no-install-recommends \
 	vim \
 	wget && \
 
-# Fix nano usage
-	export TERM=xterm && \
-
 # Clean up
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
