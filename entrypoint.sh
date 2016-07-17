@@ -29,6 +29,21 @@ if [ -w ~/.ssh ]; then
     chown -R root:root ~/.ssh && chmod 700 ~/.ssh/ && chmod 600 ~/.ssh/* || echo "WARNING: No SSH authorized_keys or config found for root"
 fi
 
+# Configure sSMTP
+if [ "$SMTP_HOST" ]; then
+    echo "mailhub=$SMTP_HOST" >> /etc/ssmtp/ssmtp.conf
+fi;
+if [ "$SMTP_AUTH_USER" ]; then
+    echo "AuthUser=$SMTP_AUTH_USER" >> /etc/ssmtp/ssmtp.conf
+fi;
+if [ "$SMTP_AUTH_PASS" ]; then
+    echo "AuthPass=$SMTP_AUTH_PASS" >> /etc/ssmtp/ssmtp.conf
+fi;
+
+if [ "$SSMTP_AUTH_PASS" ]; then
+    echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
+fi;
+
 stop() {
     echo "Received SIGINT or SIGTERM. Shutting down $DAEMON"
     # Get PID
