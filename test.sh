@@ -52,11 +52,11 @@ ssh -v -p $PORT -i ~/.ssh/test_rsa -o "StrictHostKeyChecking no" -t root@$IP "pw
 
 docker rm -f debian
 
-echo "Connecting to SSH with password"
-sudo apt-get -qq update
-sudo apt-get install -y sshpass
-docker run -d -P \
--e "SSH_ROOT_PASS=testpassword" \
---name debian debian
-export PORT=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}' debian)
-sshpass -p 'testpassword' ssh -v -p $PORT -o "StrictHostKeyChecking no" -t root@$IP "pwd"
+#echo "Connecting to SSH with password"
+#sudo apt-get -qq update
+#sudo apt-get install -y sshpass
+#docker run -d -P \
+#-e "SSH_ROOT_PASS=testpassword" \
+#--name debian debian
+#export PORT=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}' debian)
+#sshpass -p 'testpassword' ssh -v -p $PORT -o "StrictHostKeyChecking no" -t root@$IP "pwd"

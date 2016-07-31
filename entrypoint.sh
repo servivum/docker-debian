@@ -35,10 +35,10 @@ fi
 #fi
 
 # Enabling password login for root user
-if [ "$SSH_ROOT_PASS" ]; then
-    echo "root:$SSH_ROOT_PASS" | chpasswd
-    sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-fi;
+#if [ "$SSH_ROOT_PASS" ]; then
+#    echo "root:$SSH_ROOT_PASS" | chpasswd
+#    sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+#fi;
 
 # sSMTP: Write environment variables into config file
 if [ "$SMTP_HOST" ]; then
