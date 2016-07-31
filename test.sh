@@ -3,7 +3,12 @@ set -ev
 
 echo "Building and running image ..."
 docker build -t debian .
-docker run -d -P --name debian debian
+docker run -d -P \
+-e "SMTP_HOST=testhost" \
+-e "SMTP_AUTH_USER=testuser" \
+-e "SMTP_AUTH_PASS=testpassword" \
+-e "SMTP_STARTTLS=teststarttls" \
+--name debian debian
 
 echo "Waiting some time, because the process manager inside the container runs async to the docker run command ..."
 sleep 10
@@ -23,6 +28,12 @@ docker exec debian which supervisord
 docker exec debian which unzip
 docker exec debian which vim
 docker exec debian which wget
+
+echo "Check if environment variables are present in ssmtp config file ..."
+docker exec debian grep testhost /etc/ssmtp/ssmtp.conf
+docker exec debian grep testuser /etc/ssmtp/ssmtp.conf
+docker exec debian grep testpassword /etc/ssmtp/ssmtp.conf
+docker exec debian grep teststarttls /etc/ssmtp/ssmtp.conf
 
 echo "Check if sshd is running inside the container ..."
 docker exec debian ps aux | grep sshd

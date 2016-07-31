@@ -32,3 +32,18 @@ Mount your public key into `/authorized_keys` within the container. Example:
 ```bash
 docker run -d -P -v ~/.ssh/id_rsa.pub:/authorized_keys:ro servivum/debian
 ```
+
+## Use sSMTP with external SMTP relay server
+
+sSMTP is like a proxy which delegates the mails to a real MTA like 
+postfix. With these environment variables it is possible to define a 
+relay server with the corresponding credentials.
+
+```bash
+docker run -d -P \
+-e "SMTP_HOST=smtp.example.com" \
+-e "SMTP_AUTH_USER=test@example.com" \
+-e "SMTP_AUTH_PASS=secret" \
+-e "SMTP_STARTTLS=true" \
+servivum/debian
+```

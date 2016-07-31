@@ -6,6 +6,7 @@ set -e
 
 DAEMON=supervisord
 
+# SSH Configuration
 # Copy public key
 if [ -f authorized_keys ]; then
     cp authorized_keys /root/.ssh/authorized_keys
@@ -29,7 +30,7 @@ if [ -w ~/.ssh ]; then
     chown -R root:root ~/.ssh && chmod 700 ~/.ssh/ && chmod 600 ~/.ssh/* || echo "WARNING: No SSH authorized_keys or config found for root"
 fi
 
-# Configure sSMTP
+# sSMTP: Write environment variables into config file
 if [ "$SMTP_HOST" ]; then
     echo "mailhub=$SMTP_HOST" >> /etc/ssmtp/ssmtp.conf
 fi;
@@ -40,7 +41,7 @@ if [ "$SMTP_AUTH_PASS" ]; then
     echo "AuthPass=$SMTP_AUTH_PASS" >> /etc/ssmtp/ssmtp.conf
 fi;
 
-if [ "$SSMTP_AUTH_PASS" ]; then
+if [ "$SMTP_STARTTLS" ]; then
     echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
 fi;
 

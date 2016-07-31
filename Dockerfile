@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install -y  --no-install-recommends \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Configure Supervisor
-RUN mkdir -p /var/log/supervisor
 COPY etc/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 
 # Configure SSH
@@ -37,6 +36,7 @@ RUN mkdir -p /var/run/sshd && \
 # @TODO: Configure cron
 # https://github.com/mailtank-ru/rsstank/blob/master/docker/files/cron-supervisor.conf
 # https://www.ekito.fr/people/run-a-cron-job-with-docker/
+COPY etc/supervisor/conf.d/cron.conf /etc/supervisor/conf.d/cron.conf
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
