@@ -38,19 +38,26 @@ docker exec debian grep UseSTARTTLS /etc/ssmtp/ssmtp.conf
 echo "Check if sshd is running inside the container ..."
 docker exec debian ps aux | grep sshd
 
-echo "Connecting to ssh and run test command ..."
+echo "Connecting to SSH and run test command ..."
 ssh-keygen -f ~/.ssh/test_rsa -t rsa -N ''
 docker cp ~/.ssh/test_rsa.pub debian:/root/.ssh/authorized_keys
 docker exec -ti debian cat /root/.ssh/authorized_keys
 docker exec -ti debian chown root:root /root/.ssh/authorized_keys
 
-echo "Getting IP address of external docker-machine or using localhost instead ..."
-if ! docker-machine ip; then
-    export IP="127.0.0.1"
-else
-    export IP=$(docker-machine ip)
-fi
+export IP="127.0.0.1"
 
 export PORT=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}' debian)
 docker ps
 ssh -v -p $PORT -i ~/.ssh/test_rsa -o "StrictHostKeyChecking no" -t root@$IP "pwd"
+
+docker rm -f debian
+
+echo "Connecting to SSH with password"
+sudo apt-get -qq update
+sudo apt-get install -y sshpass
+docker run -d -P \
+-e "SSH_ROOT_PASS=testpassword" \
+--name debian debian
+export PORT=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}' debian)
+ssh -v -p $PORT -o "StrictHostKeyChecking no" -t root@$IP "pwd"
+sshpass -p 'testpassword' ssh -v -p $PORT -o "StrictHostKeyChecking no" -t root@$IP "pwd"

@@ -30,6 +30,12 @@ if [ -w ~/.ssh ]; then
     chown -R root:root ~/.ssh && chmod 700 ~/.ssh/ && chmod 600 ~/.ssh/* || echo "WARNING: No SSH authorized_keys or config found for root"
 fi
 
+# Enabling password login for root user
+if [ "$SSH_ROOT_PASS" ]; then
+    echo 'root:$SSH_ROOT_PASS' | chpasswd
+    sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+fi;
+
 # sSMTP: Write environment variables into config file
 if [ "$SMTP_HOST" ]; then
     echo "mailhub=$SMTP_HOST" >> /etc/ssmtp/ssmtp.conf
