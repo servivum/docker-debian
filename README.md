@@ -27,10 +27,11 @@ for more details about the image.
 
 ## Log into container via SSH with public key
 
-Mount your public key into `/authorized_keys` within the container. Example:
+Mount your public key into the container and define the path with 
+environment variable `SSH_AUTHORIZED_KEYS`. Example:
 
 ```bash
-docker run -d -P -v ~/.ssh/id_rsa.pub:/authorized_keys:ro servivum/debian
+docker run -d -P -v ~/.ssh/id_rsa.pub:/authorized_keys:ro -e "SSH_AUTHORIZED_KEYS=/authorized_keys" servivum/debian
 ```
 
 ## Use sSMTP with external SMTP relay server
