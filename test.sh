@@ -59,5 +59,4 @@ docker run -d -P \
 -e "SSH_ROOT_PASS=testpassword" \
 --name debian debian
 export PORT=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}' debian)
-ssh -v -p $PORT -o "StrictHostKeyChecking no" -t root@$IP "pwd"
 sshpass -p 'testpassword' ssh -v -p $PORT -o "StrictHostKeyChecking no" -t root@$IP "pwd"
