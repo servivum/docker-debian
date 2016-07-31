@@ -33,7 +33,7 @@ echo "Check if environment variables are present in ssmtp config file ..."
 docker exec debian grep testhost /etc/ssmtp/ssmtp.conf
 docker exec debian grep testuser /etc/ssmtp/ssmtp.conf
 docker exec debian grep testpassword /etc/ssmtp/ssmtp.conf
-docker exec debian grep teststarttls /etc/ssmtp/ssmtp.conf
+docker exec debian grep UseSTARTTLS /etc/ssmtp/ssmtp.conf
 
 echo "Check if sshd is running inside the container ..."
 docker exec debian ps aux | grep sshd
